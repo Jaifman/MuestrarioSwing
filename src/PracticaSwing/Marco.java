@@ -1,4 +1,5 @@
 package PracticaSwing;
+
 //Importación de paquetes necesarios
 import java.awt.GridLayout;
 
@@ -8,6 +9,7 @@ import javax.swing.JPanel;
 public class Marco extends JFrame {
 	
 	public Marco(){
+		
 		//Ponemos título a la ventana
 		setTitle("Prueba de Diálogos");
 		
@@ -20,9 +22,20 @@ public class Marco extends JFrame {
 		//Establecemos el tipo de lámina que queremos
 		laminaCuadricula.setLayout(new GridLayout(2,3));
 		
-		//Añadimos la lámina al marco
+		//Establecemos el array que pasaremos por parámetro al contructor de la Lámina
+		String [] primero = {"Mensaje","Confirmar","Opción","Entrada"};
+		
+		//Creamos la lámina que hará de primera caja del BoxLayout
+		laminaTipo = new Lamina("Tipo",primero);
+		
+		//Añadimos la lámina de la caja a la lámina principal
+		laminaCuadricula.add(laminaTipo);
+		
+		//Añadimos la lámina principal
 		add(laminaCuadricula);
 		
 	}
+	
+	private Lamina laminaTipo;
 	
 }
