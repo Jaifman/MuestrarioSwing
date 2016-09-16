@@ -1,5 +1,5 @@
 package PracticaSwing;
-
+//Importación de paquetes necesarios
 import java.awt.GridLayout;
 
 import javax.swing.JFrame;
