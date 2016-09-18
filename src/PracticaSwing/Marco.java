@@ -1,8 +1,10 @@
 package PracticaSwing;
 
+import java.awt.BorderLayout;
 //Importación de paquetes necesarios
 import java.awt.GridLayout;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -22,20 +24,84 @@ public class Marco extends JFrame {
 		//Establecemos el tipo de lámina que queremos
 		laminaCuadricula.setLayout(new GridLayout(2,3));
 		
-		//Establecemos el array que pasaremos por parámetro al contructor de la Lámina
-		String [] primero = {"Mensaje","Confirmar","Opción","Entrada"};
+		//Creamos las láminas que harán de cajas del BoxLayout
+		laminaTipo = new Lamina("Tipo",new String[]{
+			
+				"Mensaje",
+				"Confirmar",
+				"Opción",
+				"Entrada"				
+				
+		});
 		
-		//Creamos la lámina que hará de primera caja del BoxLayout
-		laminaTipo = new Lamina("Tipo",primero);
+		laminaTipoMensajes = new Lamina("Tipo de Mensaje",new String[]{
+			
+				"ERROR_MESSAGE",
+				"INFORMATION_MESSAGE",
+				"QUESTION_MESSAGE",
+				"PLAIN_MESSAGE"				
+				
+		});
 		
-		//Añadimos la lámina de la caja a la lámina principal
+		laminaMensaje = new Lamina("Mensaje",new String[]{
+				
+				"Cadena",
+				"Icono",
+				"Componente",
+				"Otros",
+				"Object[]"
+				
+		});
+		
+		laminaConfirmar = new Lamina("Confirmar",new String[]{
+				
+				"DEFAULT_OPTION",
+				"YES_NO_OPTION",
+				"YES_NO_CANCEL_OPTION",
+				"OK_CANCEL_OPTION"
+				
+		});
+		
+		laminaOpciones = new Lamina("Opción",new String[]{
+				
+				"String[]",
+				"Icon[]",
+				"Object[]"				
+				
+		});
+		
+		laminaEntrada = new Lamina("Entrada",new String[]{
+				
+				"Campo de Texto",
+				"Combo"				
+				
+		});
+		
+		//Añadimos las láminas de las cajas a la lámina principal
 		laminaCuadricula.add(laminaTipo);
+		laminaCuadricula.add(laminaTipoMensajes);
+		laminaCuadricula.add(laminaMensaje);
+		laminaCuadricula.add(laminaConfirmar);
+		laminaCuadricula.add(laminaOpciones);
+		laminaCuadricula.add(laminaEntrada);
 		
-		//Añadimos la lámina principal
-		add(laminaCuadricula);
+		//Creamos la lámina inferior
+		JPanel laminaMostrar = new JPanel();
 		
+		//Creamos el botón
+		JButton botonMostrar = new JButton("Mostrar");
+		
+		//Añadimos el botón a la lámina
+		laminaMostrar.add(botonMostrar);
+		
+		//Añadimos la lámina inferior, situándola en la parte inferior
+		add(laminaMostrar, BorderLayout.SOUTH);
+		
+		//Añadimos la lámina principal y la colocamos en el centro
+		add(laminaCuadricula, BorderLayout.CENTER);
+				
 	}
 	
-	private Lamina laminaTipo;
+	private Lamina laminaTipo, laminaTipoMensajes, laminaMensaje, laminaConfirmar, laminaOpciones, laminaEntrada;
 	
 }
