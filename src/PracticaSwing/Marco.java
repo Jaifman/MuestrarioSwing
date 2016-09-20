@@ -111,6 +111,46 @@ public class Marco extends JFrame {
 				
 	}
 	
+	//Método que nos devuelva el mensaje seleccionado
+	public Object getMensaje(){
+		
+		String s = laminaMensaje.getSeleccion();
+		
+		if (s.equals("Cadena")) {
+			
+			return cadenaMensaje;
+			
+		}else if (s.equals("Icono")){
+			
+			return iconoMensaje;
+			
+		}else if (s.equals("Componente")){
+			
+			return componenteMensaje;
+			
+		}else if (s.equals("Otros")){
+			
+			return objetoMensaje;
+			
+		}else if (s.equals("Object[]")){
+			
+			return new Object[]{
+					
+				cadenaMensaje,
+				iconoMensaje,
+				componenteMensaje,
+				objetoMensaje
+				
+			};
+			
+		}else{
+			
+			return null;
+			
+		}
+		
+	}
+	
 	//Clase privada que dará funcionalidad al botón mostrar
 	private class AccionMostrar implements ActionListener{
 
@@ -118,19 +158,19 @@ public class Marco extends JFrame {
 			
 			if(laminaTipo.getSeleccion().equals("Mensaje")){
 				
-				JOptionPane.showMessageDialog(Marco.this, "Mensaje", "Título", 0);
+				JOptionPane.showMessageDialog(Marco.this, getMensaje(), "Título", 0);
 				
 			}else if(laminaTipo.getSeleccion().equals("Confirmar")){
 				
-				JOptionPane.showConfirmDialog(Marco.this, "Mensaje", "Título", 0,0);
+				JOptionPane.showConfirmDialog(Marco.this, getMensaje(), "Título", 0,0);
 				
 			}else if(laminaTipo.getSeleccion().equals("Entrada")){
 				
-				JOptionPane.showInputDialog(Marco.this, "Mensaje", "Título", 0);
+				JOptionPane.showInputDialog(Marco.this, getMensaje(), "Título", 0);
 				
 			}else if(laminaTipo.getSeleccion().equals("Opción")){
 				
-				JOptionPane.showOptionDialog(Marco.this, "Mensaje", "Título", 0, 0, null, null, null);
+				JOptionPane.showOptionDialog(Marco.this, getMensaje(), "Título", 0, 0, null, null, null);
 				
 			}
 			
