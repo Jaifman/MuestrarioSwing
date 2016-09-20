@@ -1,11 +1,18 @@
 package PracticaSwing;
 
-import java.awt.BorderLayout;
 //Importación de paquetes necesarios
+import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Date;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class Marco extends JFrame {
@@ -91,6 +98,8 @@ public class Marco extends JFrame {
 		//Creamos el botón
 		JButton botonMostrar = new JButton("Mostrar");
 		
+		botonMostrar.addActionListener(new AccionMostrar());
+		
 		//Añadimos el botón a la lámina
 		laminaMostrar.add(botonMostrar);
 		
@@ -102,6 +111,37 @@ public class Marco extends JFrame {
 				
 	}
 	
+	//Clase privada que dará funcionalidad al botón mostrar
+	private class AccionMostrar implements ActionListener{
+
+		public void actionPerformed(ActionEvent e) {
+			
+			if(laminaTipo.getSeleccion().equals("Mensaje")){
+				
+				JOptionPane.showMessageDialog(Marco.this, "Mensaje", "Título", 0);
+				
+			}else if(laminaTipo.getSeleccion().equals("Confirmar")){
+				
+				JOptionPane.showConfirmDialog(Marco.this, "Mensaje", "Título", 0,0);
+				
+			}else if(laminaTipo.getSeleccion().equals("Entrada")){
+				
+				JOptionPane.showInputDialog(Marco.this, "Mensaje", "Título", 0);
+				
+			}else if(laminaTipo.getSeleccion().equals("Opción")){
+				
+				JOptionPane.showOptionDialog(Marco.this, "Mensaje", "Título", 0, 0, null, null, null);
+				
+			}
+			
+		}
+		
+	}
+	//Declaración de variables de las distintas láminas
 	private Lamina laminaTipo, laminaTipoMensajes, laminaMensaje, laminaConfirmar, laminaOpciones, laminaEntrada;
-	
+	//Declaración de variables a usar como parámetros
+	private String cadenaMensaje = "Mensaje";
+	private Icon iconoMensaje = new ImageIcon("src/bolazul.gif");
+	private Object objetoMensaje = new Date();
+	private Component componenteMensaje = new LaminaEjemplo();
 }
