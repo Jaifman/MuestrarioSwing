@@ -152,20 +152,20 @@ public class Marco extends JFrame {
 		
 	}
 	
-	//Método que nos devuelva el icono seleccionado
-	public int getIcono(){
+	//Método que nos devuelva el icono seleccionado y el nº de botones en confirmar 
+	public int getTipo(Lamina lamina){
 		
-		String s = laminaTipoMensajes.getSeleccion();
+		String s = lamina.getSeleccion();
 		
-		if(s.equals("ERROR_MESSAGE")){
+		if(s.equals("ERROR_MESSAGE") || s.equals("YES_NO_OPTION")){
 			
 			return 0;
 			
-		}else if(s.equals("INFORMATION_MESSAGE")){
+		}else if(s.equals("INFORMATION_MESSAGE") || s.equals("YES_NO_CANCEL_OPTION")){
 			
 			return 1;
 			
-		}else if(s.equals("WARNING_MESSAGE")){
+		}else if(s.equals("WARNING_MESSAGE") || s.equals("OK_CANCEL_OPTION")){
 			
 			return 2;
 			
@@ -173,7 +173,7 @@ public class Marco extends JFrame {
 			
 			return 3;
 			
-		}else if(s.equals("PLAIN_MESSAGE")){
+		}else if(s.equals("PLAIN_MESSAGE") || s.equals("DEFAULT_OPTION")){
 			
 			return -1;
 			
@@ -192,19 +192,19 @@ public class Marco extends JFrame {
 			
 			if(laminaTipo.getSeleccion().equals("Mensaje")){
 				
-				JOptionPane.showMessageDialog(Marco.this, getMensaje(), "Título", getIcono());
+				JOptionPane.showMessageDialog(Marco.this, getMensaje(), "Título", getTipo(laminaTipoMensajes));
 				
 			}else if(laminaTipo.getSeleccion().equals("Confirmar")){
 				
-				JOptionPane.showConfirmDialog(Marco.this, getMensaje(), "Título", 0, getIcono());
+				JOptionPane.showConfirmDialog(Marco.this, getMensaje(), "Título", getTipo(laminaConfirmar), getTipo(laminaTipoMensajes));
 				
 			}else if(laminaTipo.getSeleccion().equals("Entrada")){
 				
-				JOptionPane.showInputDialog(Marco.this, getMensaje(), "Título", getIcono());
+				JOptionPane.showInputDialog(Marco.this, getMensaje(), "Título", getTipo(laminaTipoMensajes));
 				
 			}else if(laminaTipo.getSeleccion().equals("Opción")){
 				
-				JOptionPane.showOptionDialog(Marco.this, getMensaje(), "Título", 0, getIcono(), null, null, null);
+				JOptionPane.showOptionDialog(Marco.this, getMensaje(), "Título", 0, getTipo(laminaTipoMensajes), null, null, null);
 				
 			}
 			
