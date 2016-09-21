@@ -45,6 +45,7 @@ public class Marco extends JFrame {
 			
 				"ERROR_MESSAGE",
 				"INFORMATION_MESSAGE",
+				"WARNING_MESSAGE",
 				"QUESTION_MESSAGE",
 				"PLAIN_MESSAGE"				
 				
@@ -151,6 +152,39 @@ public class Marco extends JFrame {
 		
 	}
 	
+	//Método que nos devuelva el icono seleccionado
+	public int getIcono(){
+		
+		String s = laminaTipoMensajes.getSeleccion();
+		
+		if(s.equals("ERROR_MESSAGE")){
+			
+			return 0;
+			
+		}else if(s.equals("INFORMATION_MESSAGE")){
+			
+			return 1;
+			
+		}else if(s.equals("WARNING_MESSAGE")){
+			
+			return 2;
+			
+		}else if(s.equals("QUESTION_MESSAGE")){
+			
+			return 3;
+			
+		}else if(s.equals("PLAIN_MESSAGE")){
+			
+			return -1;
+			
+		}else{
+			
+			return 0;
+			
+		}
+				
+	}
+	
 	//Clase privada que dará funcionalidad al botón mostrar
 	private class AccionMostrar implements ActionListener{
 
@@ -158,27 +192,29 @@ public class Marco extends JFrame {
 			
 			if(laminaTipo.getSeleccion().equals("Mensaje")){
 				
-				JOptionPane.showMessageDialog(Marco.this, getMensaje(), "Título", 0);
+				JOptionPane.showMessageDialog(Marco.this, getMensaje(), "Título", getIcono());
 				
 			}else if(laminaTipo.getSeleccion().equals("Confirmar")){
 				
-				JOptionPane.showConfirmDialog(Marco.this, getMensaje(), "Título", 0,0);
+				JOptionPane.showConfirmDialog(Marco.this, getMensaje(), "Título", 0, getIcono());
 				
 			}else if(laminaTipo.getSeleccion().equals("Entrada")){
 				
-				JOptionPane.showInputDialog(Marco.this, getMensaje(), "Título", 0);
+				JOptionPane.showInputDialog(Marco.this, getMensaje(), "Título", getIcono());
 				
 			}else if(laminaTipo.getSeleccion().equals("Opción")){
 				
-				JOptionPane.showOptionDialog(Marco.this, getMensaje(), "Título", 0, 0, null, null, null);
+				JOptionPane.showOptionDialog(Marco.this, getMensaje(), "Título", 0, getIcono(), null, null, null);
 				
 			}
 			
 		}
 		
 	}
+	
 	//Declaración de variables de las distintas láminas
 	private Lamina laminaTipo, laminaTipoMensajes, laminaMensaje, laminaConfirmar, laminaOpciones, laminaEntrada;
+	
 	//Declaración de variables a usar como parámetros
 	private String cadenaMensaje = "Mensaje";
 	private Icon iconoMensaje = new ImageIcon("src/bolazul.gif");
