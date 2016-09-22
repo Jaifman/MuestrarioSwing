@@ -232,7 +232,15 @@ public class Marco extends JFrame {
 				
 			}else if(laminaTipo.getSeleccion().equals("Entrada")){
 				
-				JOptionPane.showInputDialog(Marco.this, getMensaje(), "Título", getTipo(laminaTipoMensajes));
+				if(laminaEntrada.getSeleccion().equals("Campo de Texto")){
+				
+					JOptionPane.showInputDialog(Marco.this, getMensaje(), "Título", getTipo(laminaTipoMensajes));
+				
+				}else{
+					
+					JOptionPane.showInputDialog(Marco.this, getMensaje(), "Título", getTipo(laminaTipoMensajes), null, new String[]{"Amarillo","Azul","Rojo"}, "Azul");
+					
+				}
 				
 			}else if(laminaTipo.getSeleccion().equals("Opción")){
 				
