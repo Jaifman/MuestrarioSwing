@@ -185,6 +185,38 @@ public class Marco extends JFrame {
 				
 	}
 	
+	//Método para dar opciones a la lámina de opción
+	public Object[] getOpciones(Lamina lamina){
+		
+		String s = lamina.getSeleccion();
+		
+		if (s.equals("String[]")){
+			
+			return new String[]{"Amarillo","Azul","Rojo"};
+			
+		}else if(s.equals("Icon[]")){
+			
+			return new Object[]{new ImageIcon("src/bolazul.gif"),new ImageIcon("src/bolamarilla.gif"),new ImageIcon("src/bolaroja.gif")};
+			
+		}else if(s.equals("Object[]")){
+			
+			return new Object[]{
+					
+					cadenaMensaje,
+					iconoMensaje,
+					componenteMensaje,
+					objetoMensaje
+					
+				};
+			
+		}else{
+			
+			return null;
+			
+		}
+		
+	}
+	
 	//Clase privada que dará funcionalidad al botón mostrar
 	private class AccionMostrar implements ActionListener{
 
@@ -204,7 +236,7 @@ public class Marco extends JFrame {
 				
 			}else if(laminaTipo.getSeleccion().equals("Opción")){
 				
-				JOptionPane.showOptionDialog(Marco.this, getMensaje(), "Título", 0, getTipo(laminaTipoMensajes), null, null, null);
+				JOptionPane.showOptionDialog(Marco.this, getMensaje(), "Título", 0, getTipo(laminaTipoMensajes), null, getOpciones(laminaOpciones), null);
 				
 			}
 			
